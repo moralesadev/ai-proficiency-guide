@@ -81,7 +81,7 @@ export const quizzes: WeekQuiz[] = [
           'Using AI only for the IT department',
         ],
         correctIndex: 2,
-        explanation: "The core group model starts AI adoption with a controlled pilot group — typically power users or champions — allowing the org to learn, govern, and refine before scaling.",
+        explanation: "The core group model starts AI adoption with a controlled pilot group — typically power users or champions — allowing the organization to learn, govern, and refine before scaling.",
       },
       {
         question: 'Which stakeholders typically influence an enterprise AI adoption decision? (Pick the most complete answer)',
@@ -103,7 +103,7 @@ export const quizzes: WeekQuiz[] = [
           'Training employees on how to type prompts',
         ],
         correctIndex: 1,
-        explanation: "Most orgs can run a successful pilot, but struggle to scale. The jump from pilot to enterprise requires governance, change management, and process redesign — not just more licenses.",
+        explanation: "Most organizations can run a successful pilot, but struggle to scale. The jump from pilot to enterprise requires governance, change management, and process redesign — not just more licenses.",
       },
     ],
   },
@@ -221,7 +221,7 @@ export const quizzes: WeekQuiz[] = [
           'Add Claude on top of Copilot without evaluating current usage',
         ],
         correctIndex: 1,
-        explanation: "The trusted advisor approach is to evaluate what they already have. Many M365 orgs already have Copilot capabilities — recommending Claude on top without evaluating existing usage wastes client budget and erodes trust.",
+        explanation: "The trusted advisor approach is to evaluate what they already have. Many M365 organizations already have Copilot capabilities — recommending Claude on top without evaluating existing usage wastes client budget and erodes trust.",
       },
       {
         question: "What is Anthropic's key safety differentiator that you can position as a governance advantage for enterprise clients?",

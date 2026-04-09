@@ -15,6 +15,11 @@ function stripTimePrefix(task: string): string {
   return task.replace(/^\d+\s*min:\s*/i, '');
 }
 
+function splitDayLabel(day: string): { top: string; bottom?: string } {
+  const match = day.match(/^(Wk\s+\d+)\s+(.+)$/);
+  return match ? { top: match[1], bottom: match[2] } : { top: day };
+}
+
 export function WeekDetail() {
   const { phaseId, weekIndex } = useParams();
   const navigate = useNavigate();
@@ -22,6 +27,7 @@ export function WeekDetail() {
   const [showQuiz, setShowQuiz] = useState(false);
   const [expandedPrompts, setExpandedPrompts] = useState<Set<number>>(new Set());
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [hoveredPrompt, setHoveredPrompt] = useState<number | null>(null);
 
   function togglePrompt(i: number) {
     setExpandedPrompts((prev) => {
@@ -141,10 +147,10 @@ export function WeekDetail() {
             const mins = parseTaskMinutes(d.task);
             const taskText = stripTimePrefix(d.task);
             return (
-              <div key={i} className="overflow-hidden rounded-xl border border-gray-100 bg-white">
+              <div key={i} className="rounded-xl border border-gray-100 bg-white">
                 <div className="flex">
-                  <div className="w-20 flex flex-col items-center justify-center bg-gray-100 border-r border-gray-200 shrink-0 py-3 px-2 gap-1">
-                    <span className="text-xs font-semibold text-gray-500">{d.day}</span>
+                  <div className="w-24 flex flex-col items-center justify-center bg-gray-100 border-r border-gray-200 shrink-0 py-3 px-2 gap-1 rounded-l-xl">
+                    {(() => { const { top, bottom } = splitDayLabel(d.day); return bottom ? (<><span className="text-[10px] font-semibold text-gray-400 text-center leading-none">{top}</span><span className="text-[11px] font-semibold text-gray-600 text-center leading-tight">{bottom}</span></>) : (<span className="text-[11px] font-semibold text-gray-500 text-center leading-tight">{top}</span>); })()}
                     {mins !== null && (
                       <span
                         className="text-[10px] font-bold px-1.5 py-0.5 rounded"
@@ -158,18 +164,29 @@ export function WeekDetail() {
                     <p className="text-sm font-medium text-gray-900 mb-0.5">{d.topic}</p>
                     <p className="text-xs text-gray-500 leading-relaxed">{taskText}</p>
                     {d.prompt && (
-                      <button
-                        onClick={() => togglePrompt(i)}
-                        className={`mt-2.5 flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-lg border transition-all ${
-                          isOpen
-                            ? 'border-gray-300 bg-gray-100 text-gray-700'
-                            : 'border-gray-200 text-gray-400 hover:border-gray-300 hover:text-gray-600'
-                        }`}
+                      <div
+                        className="relative inline-block mt-2.5"
+                        onMouseEnter={() => setHoveredPrompt(i)}
+                        onMouseLeave={() => setHoveredPrompt(null)}
                       >
-                        <Clipboard size={11} />
-                        Get prompt
-                        {isOpen ? <ChevronUp size={10} className="ml-0.5" /> : <ChevronDown size={10} className="ml-0.5" />}
-                      </button>
+                        <button
+                          onClick={() => togglePrompt(i)}
+                          className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-lg border transition-all ${
+                            isOpen
+                              ? 'border-gray-300 bg-gray-100 text-gray-700'
+                              : 'border-gray-200 text-gray-400 hover:border-gray-300 hover:text-gray-600'
+                          }`}
+                        >
+                          <Clipboard size={11} />
+                          Get prompt
+                          {isOpen ? <ChevronUp size={10} className="ml-0.5" /> : <ChevronDown size={10} className="ml-0.5" />}
+                        </button>
+                        {hoveredPrompt === i && (
+                          <div className="absolute bottom-full left-0 mb-2 w-60 px-2.5 py-2 bg-gray-900 text-white text-xs rounded-lg pointer-events-none z-20 leading-relaxed">
+                            Try this prompt in any AI chat to help you with this task or topic.
+                          </div>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -317,13 +334,21 @@ export function WeekDetail() {
 
         {/* Prev / Next navigation */}
         <div className="flex gap-3">
-          {prevWeek !== null && (
+          {prevWeek !== null ? (
             <Link
               to={`/phase/${phase.id}/week/${prevWeek}`}
               className="flex-1 flex items-center gap-2 py-3 px-4 border border-gray-200 rounded-xl text-sm text-gray-600 hover:bg-gray-50 transition-colors min-w-0"
             >
               <ArrowLeft size={14} className="shrink-0" />
               <span className="truncate">{phase.weeks[prevWeek].label}: {phase.weeks[prevWeek].title}</span>
+            </Link>
+          ) : (
+            <Link
+              to={`/phase/${phase.id}`}
+              className="flex-1 flex items-center gap-2 py-3 px-4 border border-gray-200 rounded-xl text-sm text-gray-600 hover:bg-gray-50 transition-colors min-w-0"
+            >
+              <ArrowLeft size={14} className="shrink-0" />
+              <span className="truncate">{phase.label}: {phase.name}</span>
             </Link>
           )}
           {nextWeek !== null ? (

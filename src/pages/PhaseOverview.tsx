@@ -37,7 +37,7 @@ export function PhaseOverview() {
 
         {/* Back */}
         <button onClick={() => navigate('/')} className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-700 mb-6 transition-colors">
-          <ArrowLeft size={13} /> Dashboard
+          <ArrowLeft size={13} /> Home
         </button>
 
         {/* Phase tabs */}

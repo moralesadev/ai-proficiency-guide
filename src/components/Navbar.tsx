@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, LayoutDashboard, CalendarDays } from 'lucide-react';
+import { BookOpen, Home, CalendarDays } from 'lucide-react';
 
 const navItems = [
-  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/', label: 'Home', icon: Home },
   { to: '/phase/0', label: 'Learning Path', icon: BookOpen },
   { to: '/timeline', label: 'Timeline', icon: CalendarDays },
 ];

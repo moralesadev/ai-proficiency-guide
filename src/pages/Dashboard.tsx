@@ -26,7 +26,7 @@ export function Dashboard() {
             <h1 className="text-2xl font-bold text-white mb-2">AI Consultant Learning Path</h1>
             <p className="text-gray-400 text-sm max-w-md">
               {overallPct === 0
-                ? 'A self-guided checklist to take you from AI-curious to the go-to AI SME in any org. Start with Phase 1 below.'
+                ? 'A self-guided checklist to take you from AI-curious to the go-to AI SME in any organization. Start with Phase 1 below.'
                 : 'A 16-week program to take you from AI-curious to the consultant clients call by name.'}
             </p>
           </div>

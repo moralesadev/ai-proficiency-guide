@@ -30,7 +30,7 @@ export const phases: PhaseData[] = [
         topics: [
           'Centralized vs. decentralized tool deployment',
           'Shadow IT risk when employees self-install AI tools',
-          'How orgs form AI Centers of Excellence or steering committees',
+          'How organizations form AI Centers of Excellence or steering committees',
           'Adoption lifecycle: pilot → core group → governed rollout',
           'Common resistance patterns and how consultants address them',
         ],
@@ -42,7 +42,7 @@ export const phases: PhaseData[] = [
         topics: [
           'Data privacy considerations: what goes into AI prompts?',
           'Role-based access control (RBAC) for AI tools',
-          'Acceptable use policies — what orgs need and how to draft them',
+          'Acceptable use policies — what organizations need and how to draft them',
           'Compliance touchpoints: SOC 2, GDPR, HIPAA in AI context',
           "Evaluating vendor trust: Anthropic's Constitutional AI, Microsoft's responsible AI commitments",
         ],
@@ -119,15 +119,15 @@ export const phases: PhaseData[] = [
         goal: "Understand how organizations actually roll out AI tools — the politics, the pitfalls, and the playbooks. This is the consulting meat. The centralized vs. decentralized debate from your client call lives here.",
         days: [
           { day: 'Mon', topic: 'Centralized vs. decentralized', task: "45 min: Research 'AI center of excellence' and 'shadow IT AI risk'. Write down the pros and cons of each deployment model." ,
-            prompt: `I'm an AI consultant studying enterprise deployment models. Compare centralized AI deployment (IT-governed center of excellence) vs. decentralized (shadow IT / employee self-adoption). For each model: 3 pros, 3 risks, and the org type it suits best. End with a 60-second recommendation I could give a client who asks which model to use.`
+            prompt: `I'm an AI consultant studying enterprise deployment models. Compare centralized AI deployment (IT-governed center of excellence) vs. decentralized (shadow IT / employee self-adoption). For each model: 3 pros, 3 risks, and the organization type it suits best. End with a 60-second recommendation I could give a client who asks which model to use.`
           },
-          { day: 'Tue', topic: 'The core group model', task: 'Read about how orgs form AI steering committees. Map the stakeholders: IT, HR, legal, business champions.',
+          { day: 'Tue', topic: 'The core group model', task: '45 min: Read about how organizations form AI steering committees. Map the stakeholders: IT, HR, legal, business champions.',
             prompt: `I'm an AI consultant advising on AI rollout strategy. Explain the core group / pilot model: how to select the right pilot users, what IT, HR, legal, and business champions each need to contribute, how long a pilot should run, and how to structure the transition to broader rollout.`
           },
-          { day: 'Wed', topic: 'Adoption lifecycle', task: 'Read a Gartner or McKinsey piece on AI adoption curves. Note where most orgs get stuck.',
+          { day: 'Wed', topic: 'Adoption lifecycle', task: '45 min: Read a Gartner or McKinsey piece on AI adoption curves. Note where most organizations get stuck.',
             prompt: `I'm an AI consultant studying AI adoption patterns. Summarize where organizations most commonly get stuck — from initial pilot through enterprise-wide deployment. For each sticking point: why it happens, what consultants recommend, and one sentence I could use in a client conversation.`
           },
-          { day: 'Thu', topic: 'Resistance patterns', task: 'Find two case studies of failed AI rollouts. What went wrong? Was it tech, people, or process?',
+          { day: 'Thu', topic: 'Resistance patterns', task: '45 min: Find two case studies of failed AI rollouts. What went wrong? Was it tech, people, or process?',
             prompt: `I'm an AI consultant studying why AI rollouts fail. Give me 3 representative case studies of failed enterprise AI initiatives. For each: what went wrong (tech, people, or process) and what the organization should have done differently. End with the top 3 root causes of AI rollout failure.`
           },
           { day: 'Fri', topic: 'Your advisory framework', task: '45 min: Draft a simple decision framework — a set of 5 questions you\'d ask a new client to diagnose their deployment readiness.',
@@ -155,16 +155,16 @@ export const phases: PhaseData[] = [
         time: '~3 hrs total',
         goal: "You don't need to become a security expert. You need to know enough to have a credible governance conversation — and to know when to loop in IT, legal, or compliance. This week gives you that floor.",
         days: [
-          { day: 'Mon', topic: 'Data privacy basics', task: 'Read about what happens to data sent to AI APIs. Understand how major vendors (Anthropic, OpenAI, Microsoft) handle enterprise data — and what a Data Processing Agreement (DPA) adds.',
+          { day: 'Mon', topic: 'Data privacy basics', task: '45 min: Read about what happens to data sent to AI APIs. Understand how major vendors (Anthropic, OpenAI, Microsoft) handle enterprise data — and what a Data Processing Agreement (DPA) adds.',
             prompt: `I'm an AI consultant advising clients on AI data privacy. Explain how the major AI vendors handle enterprise data: Anthropic (Claude), OpenAI (ChatGPT), and Microsoft (Copilot). For each: is data used for model training by default, where is it stored, and what does a Data Processing Agreement change? Give me a 60-second answer I could give a client worried about confidential data leaving their organization.`
           },
-          { day: 'Tue', topic: 'RBAC and access controls', task: 'Learn what role-based access control means in an AI tool context. What restrictions should a company apply by role?',
+          { day: 'Tue', topic: 'RBAC and access controls', task: '30 min: Learn what role-based access control means in an AI tool context. What restrictions should a company apply by role?',
             prompt: `I'm an AI consultant setting up role-based access control for AI tools. Give me a practical example for a mid-size firm: what AI access and restrictions should apply to executives, managers, analysts, HR, IT admins, and legal? For each role: which tools, what data they can input, and any guardrails.`
           },
           { day: 'Wed', topic: 'Compliance touchpoints', task: "45 min: Read summaries of SOC 2, GDPR, and HIPAA — not deep dives, just enough to recognize when they're relevant in a client conversation." ,
             prompt: `I'm an AI consultant who needs to recognize when SOC 2, GDPR, and HIPAA are relevant in AI conversations. For each: what it governs, which industries trigger it, and the specific AI-related questions it raises. End with a when-to-escalate-to-legal guideline for each.`
           },
-          { day: 'Thu', topic: 'Acceptable use policies', task: 'Find two example corporate AI use policies (many are public). Note what they restrict and why.',
+          { day: 'Thu', topic: 'Acceptable use policies', task: '30 min: Find two example corporate AI use policies (many are public). Note what they restrict and why.',
             prompt: `I'm an AI consultant helping a client draft an AI acceptable use policy. Break down the key elements every policy should include: what to restrict and why, what to require employees to do, and common gaps that leave organizations exposed. Draft a one-paragraph executive summary explaining why the policy exists.`
           },
           { day: 'Fri', topic: 'Synthesis', task: "30 min: Draft a one-page 'governance starter checklist' you could give a client in a discovery meeting." ,
@@ -205,7 +205,7 @@ export const phases: PhaseData[] = [
           'ChatGPT (OpenAI): plans, use cases, and enterprise capabilities',
           'Claude (Anthropic): product family from Claude.ai to API and agentic tools',
           'Microsoft Copilot: M365 integration, licensing, and who already has it',
-          'Google Gemini: Workspace integration and strengths for Google-native orgs',
+          'Google Gemini: Workspace integration and strengths for Google-native organizations',
           'Side-by-side comparison: how to run the same task across tools and form a view',
         ],
       },
@@ -218,7 +218,7 @@ export const phases: PhaseData[] = [
           'Microsoft 365 Copilot: Word, Excel, Teams, and the enterprise licensing model',
           'GitHub Copilot and coding-focused AI tools — who benefits and who doesn\'t',
           'Google Gemini Advanced and NotebookLM — Google\'s power-user offer',
-          "Building a consultant's tool selection matrix: the right tool for the right org",
+          "Building a consultant's tool selection matrix: the right tool for the right organization",
         ],
       },
       {
@@ -261,7 +261,7 @@ export const phases: PhaseData[] = [
           { day: 'Wed', topic: 'Microsoft Copilot — who already has it', task: "45 min: Read Microsoft's Copilot overview. Understand the difference between Copilot (free, built into Windows/Edge/Bing) and Microsoft 365 Copilot (paid, integrated into Teams, Outlook, Word, Excel). Who already has access through their M365 license?",
             prompt: `I'm an AI consultant advising clients on Microsoft Copilot. Explain the difference between the free Copilot (built into Windows/Edge/Bing) and Microsoft 365 Copilot (paid enterprise product integrated into Teams, Outlook, Word, and Excel). Who already has each through their Microsoft subscription? When should a client prioritize Copilot over adding another AI tool?`
           },
-          { day: 'Thu', topic: 'Google Gemini — strengths for Google-native orgs', task: "45 min: Try Gemini at gemini.google.com. Read the Gemini for Google Workspace overview. Who already has Gemini through their Google subscription? When does Gemini win vs. when should a client look elsewhere?",
+          { day: 'Thu', topic: 'Google Gemini — strengths for Google-native organizations', task: "45 min: Try Gemini at gemini.google.com. Read the Gemini for Google Workspace overview. Who already has Gemini through their Google subscription? When does Gemini win vs. when should a client look elsewhere?",
             prompt: `I'm an AI consultant advising Google Workspace clients on Gemini. Break down Google Gemini: the free tier, Gemini Advanced, and Gemini for Google Workspace. Who already has it through their Google subscription? What are its genuine strengths for Google-native organizations, and when is it insufficient compared to Claude or ChatGPT?`
           },
           { day: 'Fri', topic: 'Side-by-side comparison', task: "60 min: Run the same business task (e.g. summarize an email thread and draft a response) in ChatGPT, Claude, Copilot, and Gemini. Document what you notice. Build a one-page comparison card you'd share with a client.",
@@ -736,7 +736,7 @@ export const phases: PhaseData[] = [
           { day: 'Wk 15 Mon–Tue', topic: 'Build your intelligence system', task: '90 min: Set up your information diet. Identify 5 sources you\'ll read weekly (newsletters, blogs, release notes). Set up one aggregator (Feedly, Readwise, or a simple bookmark folder). Schedule 30 minutes every Friday as a standing \'AI news review.\' This habit is worth more than any course.',
             prompt: `I'm an AI consultant building a system to stay current. Recommend 5 specific sources with good signal-to-noise for enterprise AI consulting. Suggest an aggregator workflow for under 30 minutes per week. Give me a standing Friday review agenda — what questions to ask myself. Tell me the 3 types of AI news to flag immediately vs. what to skim.`
           },
-          { day: 'Wk 15 Wed–Thu', topic: 'Build your tool radar', task: 'Create a living document with four columns: Proven (recommend freely), Emerging (recommend with guardrails), Experimental (advise caution), Deprecated (steer away). Populate it with every AI tool you\'ve learned about across all four phases. Update it monthly.',
+          { day: 'Wk 15 Wed–Thu', topic: 'Build your tool radar', task: '60 min: Create a living document with four columns: Proven (recommend freely), Emerging (recommend with guardrails), Experimental (advise caution), Deprecated (steer away). Populate it with every AI tool you\'ve learned about across all four phases. Update it monthly.',
             prompt: `I'm an AI consultant building a tool radar. Define the criteria for Proven, Emerging, Experimental, and Deprecated categories. Evaluate these 10 tools and place them with reasoning: Claude, ChatGPT, Microsoft Copilot, Google Gemini, Midjourney, GitHub Copilot, Perplexity, Notion AI, Zapier AI, and Otter.ai. Suggest what fields my radar document should track for each tool.`
           },
           { day: 'Wk 15 Fri', topic: 'Peer community and learning', task: '45 min: Find one practitioner community to join — an AI consultants Slack, a LinkedIn group, a local meetup, or an Anthropic partner network. The goal is a peer group who will surface things you\'d otherwise miss and challenge your thinking before clients do.',
