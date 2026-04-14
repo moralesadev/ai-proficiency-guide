@@ -252,6 +252,84 @@ export const quizzes: WeekQuiz[] = [
     weekIndex: 2,
     questions: [
       {
+        question: "A client asks about Otter.ai for their team. Before recommending it, what should you check first?",
+        options: [
+          'Whether the team prefers iOS or Android',
+          'Whether their existing meeting platform (Zoom, Teams, Meet) already includes AI meeting notes natively',
+          'Whether Otter.ai has a mobile app',
+          'Whether Otter.ai integrates with Gmail',
+        ],
+        correctIndex: 1,
+        explanation: "Zoom AI, Microsoft Teams Copilot, and Google Meet already include AI-generated meeting summaries for many users. Before recommending a standalone tool like Otter.ai, check what the client already has — adding a redundant subscription wastes budget and erodes trust.",
+      },
+      {
+        question: "A non-technical COO asks: 'Can we connect Claude to our CRM so it auto-summarizes deals?' What is the most accurate response?",
+        options: [
+          "'That's not possible — AI tools don't connect to CRMs.'",
+          "'Yes, you'd need a custom developer build — expect a 6-month project.'",
+          "'Yes — tools like Zapier or Make can connect Claude to most CRMs with minimal development, though the right approach depends on your CRM and use case.'",
+          "'Claude automatically connects to all major CRMs.'",
+        ],
+        correctIndex: 2,
+        explanation: "Workflow connectors like Zapier and Make can link Claude (via API) to most major CRMs without custom development. The answer is 'yes, and here's approximately how' — not 'no' and not an unqualified 'yes, it's easy.' Accurate scoping builds credibility.",
+      },
+      {
+        question: "When would you recommend Harvey AI over Claude for a legal department client?",
+        options: [
+          'Always — Harvey is more powerful than Claude',
+          'Never — general-purpose AI is always sufficient for legal work',
+          'When the client needs AI trained specifically on legal data with features like case law search, contract review workflows, and legal citation handling',
+          'When the client cannot afford Claude',
+        ],
+        correctIndex: 2,
+        explanation: "Vertical AI tools like Harvey are worth recommending when general-purpose AI lacks the domain-specific training, workflows, or integrations that a specialized industry requires. For most legal tasks, Claude is sufficient — but for firms doing high-volume contract review or case research, purpose-built legal AI has genuine advantages.",
+      },
+    ],
+  },
+  {
+    phaseId: 1,
+    weekIndex: 3,
+    questions: [
+      {
+        question: "Which prompt structure element defines WHO the AI should behave as in the response?",
+        options: [
+          'Format',
+          'Context',
+          'Role',
+          'Constraints',
+        ],
+        correctIndex: 2,
+        explanation: "The Role element tells the AI what persona or expertise to adopt — e.g. 'You are an experienced enterprise AI consultant.' Setting the role shapes the tone, depth, and framing of the response.",
+      },
+      {
+        question: "You need the AI to reason through a complex problem step by step rather than jump to a conclusion. Which prompting technique applies?",
+        options: [
+          'Few-shot prompting',
+          'Chain-of-thought prompting',
+          'Role prompting',
+          'Format constraining',
+        ],
+        correctIndex: 1,
+        explanation: "Chain-of-thought prompting asks the model to 'think step by step' or 'walk through your reasoning.' It improves accuracy on multi-step reasoning tasks by preventing the model from jumping to a plausible-sounding but incorrect answer.",
+      },
+      {
+        question: "A prompt you wrote for a client's team keeps producing vague, generic output. What is the most likely root cause?",
+        options: [
+          'The AI model is not capable enough for this task',
+          'The prompt lacks sufficient Context and Constraints — the model has too little information to produce a specific answer',
+          'The prompt is too long and needs to be shortened',
+          'The client is not using the right AI tool',
+        ],
+        correctIndex: 1,
+        explanation: "Vague output almost always results from vague input. Missing context (what organization, what situation, what constraints) forces the model to make assumptions and produce generic results. Adding specific context — company size, industry, format required, what not to include — typically resolves this immediately.",
+      },
+    ],
+  },
+  {
+    phaseId: 1,
+    weekIndex: 4,
+    questions: [
+      {
         question: "A client asks 'Should we buy new Macs for our team so they can use AI tools?' What is the most accurate response?",
         options: [
           'Yes, Macs are required for all AI tools',
@@ -369,7 +447,46 @@ export const quizzes: WeekQuiz[] = [
     weekIndex: 2,
     questions: [
       {
-        question: "A client's IT team says 'We can't approve Claude Cowork because we don't know where our data goes.' What is the best response?",
+        question: 'A client asks what ROI they can expect from deploying Claude for their sales team. What is the most credible consultant response?',
+        options: [
+          "'You'll see a 40% productivity increase — that's the industry standard.'" ,
+          "'ROI from AI is impossible to estimate before deployment.'" ,
+          "'Based on similar deployments, teams typically save X–Y hours per week on [specific tasks] — let me help you define the metrics upfront so we can measure it.'" ,
+          "'The ROI doesn't matter — the competitive risk of not adopting AI is more important.'" ,
+        ],
+        correctIndex: 2,
+        explanation: "The credible answer gives a range based on comparable cases, ties it to specific workflows, and commits to measuring it. Quoting a precise percentage without evidence erodes trust. Refusing to estimate at all is unhelpful. The best consultants provide honest ranges and define success metrics before the project starts.",
+      },
+      {
+        question: 'When sequencing an enterprise AI rollout, which group is typically the best starting point?',
+        options: [
+          'The entire organization simultaneously, to show commitment',
+          'Only the IT department, to test security before broader rollout',
+          'A small group of motivated, technically comfortable users who can generate early wins and surface real issues',
+          'The most resistant department, to prove AI works despite skepticism',
+        ],
+        correctIndex: 2,
+        explanation: "Lighthouse users — motivated early adopters who understand the value and can generate visible wins — are the best pilot group. They surface genuine issues, create internal advocates, and produce the success stories that make broader rollout easier. Starting with resistant groups risks early failure that contaminates perception of the whole initiative.",
+      },
+      {
+        question: "What is the most effective first response to 'AI is taking our jobs' from a frontline employee?",
+        options: [
+          "'That's not true — AI won't replace any jobs.'" ,
+          "'Your job is safe. Let me show you how to use AI tools.'" ,
+          "Validate the concern directly: acknowledge the fear is real and understandable, then redirect toward how AI will change the role rather than replace it." ,
+          "'Focus on learning to use the tools and the job security question will resolve itself.'" ,
+        ],
+        correctIndex: 2,
+        explanation: "Dismissing the concern ('that's not true') destroys trust immediately. The honest answer is that AI will change many roles, and the best protection is developing the skills to work with it. Validation before redirection is the only approach that keeps the conversation constructive.",
+      },
+    ],
+  },
+  {
+    phaseId: 2,
+    weekIndex: 3,
+    questions: [
+      {
+        question: "A client's IT team says 'We can't approve Claude for Teams because we don't know where our data goes.' What is the best response?",
         options: [
           "Tell them their concern is unfounded and approve it anyway",
           "Validate the concern, point to Anthropic's trust center and DPA options, and propose a governed pilot with limited data scope",
@@ -411,6 +528,56 @@ export const quizzes: WeekQuiz[] = [
         ],
         correctIndex: 2,
         explanation: "Licenses and training attendance are vanity metrics. Real adoption shows up in regular usage and measurable productivity change — the behaviors that indicate AI has changed how work gets done.",
+      },
+    ],
+  },
+  {
+    phaseId: 2,
+    weekIndex: 4,
+    questions: [
+      {
+        question: 'What are the three tiers of a well-designed enterprise AI training program?',
+        options: [
+          'Beginner, intermediate, and advanced — based on years of experience',
+          'Awareness (why AI matters), Proficiency (use-case-specific skills), and Power user / Champion (advanced application and peer teaching)',
+          'Online, in-person, and self-paced — based on learning format',
+          'Individual, team, and department — based on org structure',
+        ],
+        correctIndex: 1,
+        explanation: 'A three-tier training structure mirrors how adoption actually spreads: awareness sessions for everyone, proficiency training for active users, and champion-level depth for the internal advocates who teach peers and surface issues in real time.',
+      },
+      {
+        question: "What is an AI 'champion' and why are they critical to sustained adoption?",
+        options: [
+          'A vendor sales representative assigned to each account',
+          'An employee with a formal AI certification who approves tool requests',
+          'A motivated internal user who models AI adoption, teaches peers, and surfaces practical feedback — creating adoption from within rather than from above',
+          'The executive sponsor who approved the AI budget',
+        ],
+        correctIndex: 2,
+        explanation: 'Champions are internal advocates who drive peer-to-peer adoption — more credible and sustainable than top-down mandates. They surface real usage problems early and create the visible wins that build organizational momentum.',
+      },
+      {
+        question: 'Which metric most reliably indicates that AI training has translated into genuine behavioral change?',
+        options: [
+          'Number of employees who attended a training session',
+          'Number of AI licenses activated',
+          'Weekly active usage combined with measurable improvement on specific tasks (e.g., time saved, output quality)',
+          'Number of positive survey responses after training',
+        ],
+        correctIndex: 2,
+        explanation: 'Attendance and license activation are leading indicators, but they measure exposure — not adoption. Behavioral change shows up in sustained weekly usage and measurable productivity impact on the specific workflows the training targeted.',
+      },
+      {
+        question: "In Kotter's 8-step change model, what is the most common reason enterprise AI initiatives lose momentum after a successful pilot?",
+        options: [
+          'The technology stops working after the pilot phase',
+          'Declaring victory too early — before new behaviors are anchored in organizational culture and process',
+          'Running out of AI vendor support',
+          'Employees forget how to use the tools',
+        ],
+        correctIndex: 1,
+        explanation: "Kotter's model warns that declaring victory prematurely is the most common failure mode in change initiatives. In AI adoption, this means rolling back the governance, champion program, or executive attention before the new behaviors are self-sustaining. The pilot working is not the same as the change being complete.",
       },
     ],
   },

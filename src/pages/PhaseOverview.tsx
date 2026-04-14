@@ -2,17 +2,17 @@ import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   ChevronDown, ChevronRight, CheckCircle, Clock, ArrowLeft,
-  Globe, Building2, ShieldCheck, LayoutGrid, Layers, Cpu,
+  Globe, Building2, ShieldCheck, LayoutGrid, Layers, Layers3, Cpu,
   ClipboardList, Zap, ShieldAlert, GraduationCap,
-  Lightbulb, Briefcase, RefreshCw,
+  Lightbulb, Briefcase, RefreshCw, TrendingUp, MessageSquareText,
   type LucideProps,
 } from 'lucide-react';
 import type { ComponentType } from 'react';
 
 const iconMap: Record<string, ComponentType<LucideProps>> = {
-  Globe, Building2, ShieldCheck, LayoutGrid, Layers, Cpu,
+  Globe, Building2, ShieldCheck, LayoutGrid, Layers, Layers3, Cpu,
   ClipboardList, Zap, ShieldAlert, GraduationCap,
-  Lightbulb, Briefcase, RefreshCw,
+  Lightbulb, Briefcase, RefreshCw, TrendingUp, MessageSquareText,
 };
 import { phases } from '../data/phases';
 import { getPhaseProgress, getWeekProgress } from '../services/progressService';
@@ -26,6 +26,10 @@ export function PhaseOverview() {
   if (!phase) return <div className="pt-14 p-8 text-gray-500">Phase not found.</div>;
 
   const phasePct = getPhaseProgress(phase.id, phase.weeks);
+  const currentWeekIdx = (() => {
+    const idx = phase.weeks.findIndex((w, wi) => getWeekProgress(phase.id, wi, w.checks.length) < 100);
+    return idx === -1 ? -1 : idx;
+  })();
 
   function toggle(i: number) {
     setExpanded((prev) => ({ ...prev, [i]: !prev[i] }));
@@ -168,7 +172,11 @@ export function PhaseOverview() {
                   <Link
                     key={wi}
                     to={`/phase/${phase.id}/week/${wi}`}
-                    className="flex items-center justify-between bg-white rounded-xl border border-gray-100 px-5 py-4 hover:shadow-sm hover:border-gray-200 transition-all group"
+                    className={`flex items-center justify-between bg-white rounded-xl border px-5 py-4 hover:shadow-sm transition-all group ${
+                      wi === currentWeekIdx && weekPct < 100
+                        ? 'border-gray-400 shadow-sm'
+                        : 'border-gray-100 hover:border-gray-200'
+                    }`}
                   >
                     <div className="flex items-center gap-4">
                       <span
@@ -178,10 +186,17 @@ export function PhaseOverview() {
                         {w.label}
                       </span>
                       <div>
-                        <p className="text-sm font-medium text-gray-900">{w.title}</p>
-                        <div className="flex items-center gap-1 text-xs text-gray-400 mt-0.5">
-                          <Clock size={11} />
-                          <span>{w.time}</span>
+                        <div className="flex items-center gap-2">
+                          <p className="text-sm font-medium text-gray-900">{w.title}</p>
+                          {wi === currentWeekIdx && weekPct < 100 && (
+                            <span className="text-[10px] font-semibold px-1.5 py-0.5 rounded-full bg-gray-900 text-white">Continue</span>
+                          )}
+                        </div>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <div className="flex items-center gap-1 text-xs text-gray-400">
+                            <Clock size={11} />
+                            <span>{w.time}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -189,7 +204,7 @@ export function PhaseOverview() {
                       {weekPct === 100 ? (
                         <CheckCircle size={15} className="text-emerald-500" />
                       ) : (
-                        <span className="text-xs text-gray-400">{weekPct}%</span>
+                        <span className="text-xs text-gray-400">{weekPct > 0 ? `${weekPct}%` : ''}</span>
                       )}
                       <ChevronRight size={15} className="text-gray-300 group-hover:text-gray-500 group-hover:translate-x-0.5 transition-all" />
                     </div>

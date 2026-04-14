@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, Home, CalendarDays } from 'lucide-react';
+import { BookOpen, Home, CalendarDays, BookMarked } from 'lucide-react';
 
 const navItems = [
   { to: '/', label: 'Home', icon: Home },
@@ -7,7 +7,11 @@ const navItems = [
   { to: '/timeline', label: 'Timeline', icon: CalendarDays },
 ];
 
-export function Navbar() {
+interface NavbarProps {
+  onOpenGlossary: () => void;
+}
+
+export function Navbar({ onOpenGlossary }: NavbarProps) {
   const { pathname } = useLocation();
 
   function isActive(to: string) {
@@ -37,6 +41,13 @@ export function Navbar() {
               <span className="hidden sm:inline">{label}</span>
             </Link>
           ))}
+          <button
+            onClick={onOpenGlossary}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-colors"
+          >
+            <BookMarked size={13} />
+            <span className="hidden sm:inline">Glossary</span>
+          </button>
         </div>
       </div>
     </nav>

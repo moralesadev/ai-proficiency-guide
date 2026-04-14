@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ExternalLink, Lightbulb, Brain, CheckSquare, Package, Clipboard, ClipboardCheck, ChevronDown, ChevronUp, CheckCircle } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, Lightbulb, Brain, CheckSquare, Package, Clipboard, ClipboardCheck, ChevronDown, ChevronUp, CheckCircle, ChevronsDownUp, ChevronsUpDown } from 'lucide-react';
 import { phases } from '../data/phases';
 import { quizzes } from '../data/quizzes';
 import { isChecked, toggleCheck, getWeekProgress, isQuizCompleted, markQuizCompleted } from '../services/progressService';
@@ -139,7 +139,22 @@ export function WeekDetail() {
         )}
 
         {/* Daily schedule */}
-        <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Daily schedule</h2>
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Daily schedule</h2>
+          {week.days.some((d) => d.prompt) && (
+            <button
+              onClick={() => {
+                const allOpen = week.days.every((d, i) => !d.prompt || expandedPrompts.has(i));
+                setExpandedPrompts(allOpen ? new Set() : new Set(week.days.map((_, i) => i)));
+              }}
+              className="flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              {week.days.every((d, i) => !d.prompt || expandedPrompts.has(i))
+                ? <><ChevronsDownUp size={12} /> Collapse all</>
+                : <><ChevronsUpDown size={12} /> Expand all prompts</>}
+            </button>
+          )}
+        </div>
         <div className="space-y-2 mb-6">
           {week.days.map((d, i) => {
             const isOpen = expandedPrompts.has(i);
